@@ -17,7 +17,7 @@ class Profile extends React.Component {
             <span className="tag is-primary">{auth.isLandlord ? 'Landlord' : 'Tenant'}</span>
           </div>
           <div className="grid">
-            {!!currentSession.reservations.length &&
+            {!!currentSession.reservations &&
               currentSession.reservations.map((reservation, index) => {
                 const startDate = parseDate(reservation.startDate);
                 const endDate = parseDate(reservation.endDate);
