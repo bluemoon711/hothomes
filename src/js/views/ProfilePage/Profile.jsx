@@ -30,7 +30,11 @@ class Profile extends React.Component {
                     <div className="message-body">
                       <p>From: {startDate} To: {endDate}</p>
                       <p>Monthly Rate: ${description.price}</p>
-                      <Link to={'/listings/' + reservation.propertyID}>More Details</Link>
+                      <Link
+                        className="button is-primary"
+                        to={'/listings/' + reservation.propertyID}>
+                        More Details
+                      </Link>
                     </div>
                   </article>
                 );
