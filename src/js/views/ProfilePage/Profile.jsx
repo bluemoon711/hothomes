@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import NavigationBar from '../../components/NavigationBar';
 import Footer from '../../components/Footer/Footer';
 
@@ -16,17 +17,29 @@ class Profile extends React.Component {
             <span className="tag is-primary">{auth.isLandlord ? 'Landlord' : 'Tenant'}</span>
           </div>
           <div className="grid">
-          {!!currentSession.reservations.length &&
-            currentSession.reservations.map((reservation, index) => {
-              const startDate = parseDate(reservation.startDate);
-              const endDate = parseDate(reservation.endDate);
-              return (
-                <div key={index}>
-                  <p>From: {startDate} To: {endDate}</p>
-                </div>
-              );
-            })
-          }
+            {!!currentSession.reservations &&
+              currentSession.reservations.map((reservation, index) => {
+                const startDate = parseDate(reservation.startDate);
+                const endDate = parseDate(reservation.endDate);
+                const { address, description } = reservation.propertyDetails;
+                return (
+                  <article className="message is-dark" key={index}>
+                    <div className="message-header">
+                      <p>{`${address.street}, ${address.city} ${address.zipCode}`}</p>
+                    </div>
+                    <div className="message-body">
+                      <p>From: {startDate} To: {endDate}</p>
+                      <p>Monthly Rate: ${description.price}</p>
+                      <Link
+                        className="button is-primary"
+                        to={'/listings/' + reservation.propertyID}>
+                        More Details
+                      </Link>
+                    </div>
+                  </article>
+                );
+              })
+            }
           </div>
         </div>
         <Footer />

@@ -17,8 +17,6 @@ const initialState = {
     firstName: '',
     lastName: '',
     isLandlord: false,
-    properties: [],
-    rentals: [],
     id: '',
   },
   homePage: {
@@ -42,7 +40,6 @@ const initialState = {
     currentProperty: '',
     properties: [],
     reservations: [],
-    propertyDetails: [],
   },
   publishListings: {
     street: '',

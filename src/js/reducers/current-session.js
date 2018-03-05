@@ -38,9 +38,13 @@ function currentSessionReducer(state = initialState.currentSession, action) {
     }
 
     case 'USER_RESERVATIONS_DETAILS': {
+      const reservationsCopy = state.reservations.slice();
+      for (var i = 0; i < reservationsCopy.length; i++) {
+        reservationsCopy[i].propertyDetails = action.propertyDetails[i];
+      }
       return {
         ...state,
-        propertyDetails: action.propertyDetails,
+        reservations: reservationsCopy,
       };
     }
 

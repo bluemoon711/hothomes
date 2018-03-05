@@ -41,7 +41,6 @@ export function updateDatabaseProperty(action) {
                 property.address.latitude = latLng.lat,
                 property.address.longitude = latLng.lng,
                 axios.post('/api/properties', property).then(response => {
-                    console.log(response);
                     dispatch({
                         type: 'UPDATE_DATABASE_PROPERTY',
                         payload: response,

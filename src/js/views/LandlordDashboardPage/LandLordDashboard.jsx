@@ -13,10 +13,10 @@ class LandlordDashboard extends React.Component {
       <div>
         <NavigationBar />
         <div className="main-section">
-          <Link to='/profile/publish'>Add new listing</Link>
-          {!properties.length &&
-          <p>You currently have no listings.</p>
-          }
+          <Link
+            className="button is-info"
+            to='/profile/publish'>Add new listing
+          </Link>
           {!!properties.length &&
             <Carousel showThumbs={false}>
               {properties.map((property, index) => {
